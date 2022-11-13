@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Button from "./Components/Button";
+import Button from "./Components/Buttons";
 import Dice from "./Components/Dice";
-import { Player1 } from "./Components/Player";
-import { Player2 } from "./Components/Player";
+import { Player1 } from "./Components/Players";
+import { Player2 } from "./Components/Players";
 import "./Components/style.css";
 
 function App() {
@@ -24,17 +24,6 @@ function App() {
       setDice2({ number: Math.floor(Math.random() * 6) + 1 });
     }
   };
-
-  useEffect(() => {
-    if (dice.number !== 1 || dice2.number !== 1) {
-      const newScore = dice.number + dice2.number;
-      setCurrentScore((currentScore) => currentScore + newScore);
-    }
-    if (dice.number === 6 && dice2.number === 6) {
-      activePlayer === 1 ? setActivePlayer(2) : setActivePlayer(1);
-      setIsGameOver(true);
-    }
-  }, [dice.number, dice2.number]);
 
   useEffect(() => {
     if (currentScore >= 100) {
